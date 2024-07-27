@@ -13,6 +13,7 @@ list_of_files = [
     f"scripts/{project_name}/__init__.py",
     f"scripts/{project_name}/components/__init__.py",
     f"scripts/{project_name}/utils/__init__.py",
+    f"scripts/{project_name}/utils/common.py",
     f"scripts/{project_name}/config/__init__.py",
     f"scripts/{project_name}/config/configuration.py",
     f"scripts/{project_name}/pipeline/__init__.py",
@@ -23,6 +24,7 @@ list_of_files = [
     "templates/index.html",
     "dvc.yaml",
     "params.yaml",
+    "main.py",
     "requirements.txt",
     "setup.py",
 
