@@ -18,6 +18,7 @@ list_of_files = [
     f"scripts/{project_name}/config/configuration.py",
     f"scripts/{project_name}/pipeline/__init__.py",
     f"scripts/{project_name}/entity/__init__.py",
+    f"scripts/{project_name}/exception/__init__.py",
     f"scripts/{project_name}/constants/__init__.py",
     "config/config.yaml",
     "research/trials.ipynb",

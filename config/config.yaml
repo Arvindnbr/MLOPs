@@ -1,0 +1,13 @@
+artifacts_root: artifacts
+
+
+data_ingestion:
+  root_dir: artifacts/data_ingestion
+  source_url: https://universe.roboflow.com/ds/i02h52wl6q?key=ZM0MEFLZ5R
+  local_data: artifacts/data_ingestion/data.zip
+  unzip_dir: artifacts/data_ingestion/data
+
+
+
+# E waste dataset "https://universe.roboflow.com/ds/i02h52wl6q?key=ZM0MEFLZ5R"
+# COCO data     "https://public.roboflow.com/ds/fYqIOuhVKK?key=sAOM4f2h70"

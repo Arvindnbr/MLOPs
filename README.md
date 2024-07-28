@@ -1,4 +1,14 @@
 # MLOPs
+## Workflows
+default workflows
+1. Update config.yaml
+2. Update params.yaml
+3. update entity
+4. update configuration manager     config.py
+5. update components
+6. update pipeline.py
+7. update main.py
+8. update dvc.yaml
 
 
 python box for exception handling
