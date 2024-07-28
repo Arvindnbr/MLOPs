@@ -26,6 +26,19 @@ def read_yaml(yaml_path:Path)-> ConfigBox:
         raise e
     
 @ensure_annotations
+def update_train_yaml(yaml_path, path_dir):
+    with open(yaml_path,'r') as file:
+        data = yaml.safe_load(file)
+    data['train'] = 'train/images'
+    data['val'] = 'valid/images'
+    new_key = 'path'
+    new_value = path_dir
+    data[new_key] = new_value
+
+    with open(yaml_path, 'w') as file:
+        yaml.safe_dump(data, file,default_flow_style=False)
+    
+@ensure_annotations
 def create_directories(path_to_dir: list, verbose=True):
     for path in path_to_dir:
         os.makedirs(path, exist_ok=True)

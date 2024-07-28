@@ -31,3 +31,5 @@ class DataIngestion:
         os.makedirs(unzip_path,exist_ok=True)
         with zipfile.ZipFile(self.config.local_data, 'r') as z:
             z.extractall(unzip_path)
+        
+        os.remove(self.config.local_data)

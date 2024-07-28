@@ -3,11 +3,26 @@ artifacts_root: artifacts
 
 data_ingestion:
   root_dir: artifacts/data_ingestion
-  source_url: https://universe.roboflow.com/ds/i02h52wl6q?key=ZM0MEFLZ5R
+  source_url: https://universe.roboflow.com/ds/xVFScOg5j2?key=93Tq5paN8Z
   local_data: artifacts/data_ingestion/data.zip
   unzip_dir: artifacts/data_ingestion/data
 
 
-
+# timy-dset "https://universe.roboflow.com/ds/xVFScOg5j2?key=93Tq5paN8Z"
 # E waste dataset "https://universe.roboflow.com/ds/i02h52wl6q?key=ZM0MEFLZ5R"
 # COCO data     "https://public.roboflow.com/ds/fYqIOuhVKK?key=sAOM4f2h70"
+
+data_validation:
+  data_val_dir: artifacts/data_validation
+  data_val_status: artifacts/data_validation/status.txt
+  data_val_req: 
+    - train
+    - valid
+    - data.yaml
+
+
+training_params:  
+  model: yolov8n.pt # choices="yolov8n","yolov8s","yolov8m","yolov8l","yolov8x"
+  epochs: 1
+  batch: 5
+  imgsz: 640
