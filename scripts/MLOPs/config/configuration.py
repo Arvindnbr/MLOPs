@@ -35,6 +35,16 @@ class ConfigurationManager:
             model= config.model,
             epoch= config.epoch,
             batch= config.batch,
-            imgsz= config.imgsz
+            imgsz= config.imgsz,
+            save_path= config.save_path,
         )
         return modelparams
+    
+    def get_mlflow_config(self)-> MlflowConfig:
+        config = self.config.mlflow
+        mlflow_config = MlflowConfig(
+            mlflow_uri= config.mlflow_uri,
+            experiment_name= config.experiment_name,
+            model_name= config.model_name
+        )
+        return mlflow_config

@@ -23,6 +23,18 @@ data_validation:
 
 training_params:  
   model: yolov8n.pt # choices="yolov8n","yolov8s","yolov8m","yolov8l","yolov8x"
+  save_path: artifacts/trained_models
   epochs: 1
   batch: 5
   imgsz: 640
+
+mlflow:
+  mlflow_uri: http://127.0.0.1:8080
+  experiment_name: v8OPS
+  model_name: yolov8det
+
+
+# evaluation:
+#   path_of_model: artifacts/trained_model/Trainedv8.pt
+#   trainig_data: artifacts/data_ingestion/data
+#   mlflow_uri: https://dagshub.com/Arvindnbr/MLOPs.mlflow

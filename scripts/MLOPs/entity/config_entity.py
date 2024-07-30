@@ -18,6 +18,13 @@ class DataValidationConfig:
 @dataclass(frozen=True)
 class ModelTrainerConfig:
     model: str
+    save_path: Path
     epochs: int
     batch: int
     imgsz: int
+
+@dataclass(frozen=True)
+class MlflowConfig:
+    mlflow_uri: str
+    experiment_name: str
+    model_name: str

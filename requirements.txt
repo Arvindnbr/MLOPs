@@ -18,4 +18,5 @@ dvc
 joblib
 Flask
 Flask-Cors
+mlflow
 -e . 
