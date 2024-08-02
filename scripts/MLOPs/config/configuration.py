@@ -23,28 +23,46 @@ class ConfigurationManager:
         config = self.config.data_validation
         create_directories([config.data_val_dir])
         data_validation_config = DataValidationConfig(
+            current_dset= config.current_dset,
             root_dir=config.data_val_dir,
             status_file_dir= config.data_val_status,
             req_files= config.data_val_req
             )
         return data_validation_config
     
-    def get_model_trainer(self)-> ModelTrainerConfig:
-        config = self.config.training_params
-        modelparams = ModelTrainerConfig(
+    def get_train_log_config(self)-> TrainLogConfig:
+        config = self.config.train_log_config
+        trainlogconfig = TrainLogConfig(
             model= config.model,
-            epoch= config.epoch,
-            batch= config.batch,
-            imgsz= config.imgsz,
             save_path= config.save_path,
-        )
-        return modelparams
-    
-    def get_mlflow_config(self)-> MlflowConfig:
-        config = self.config.mlflow
-        mlflow_config = MlflowConfig(
             mlflow_uri= config.mlflow_uri,
             experiment_name= config.experiment_name,
             model_name= config.model_name
+            )
+        return trainlogconfig
+    
+    #optional
+    def get_Dataset_config(self)-> DataSetConfig:
+        config = self.config.custom_dataset
+        dataset_config = DataSetConfig(
+            base_Data_path= config.base_Data_path,
+            classes= config.classes,
+            new_data_path= config.new_data_path,
+            dataset_name=config.dataset_name
         )
-        return mlflow_config
+        return dataset_config
+    
+    def get_params(self)-> Params:
+        param = self.config.params
+        params = Params(
+            optimizer = param.optimizer,
+            lr0 = param.lr0,
+            save_period = param.save_period,
+            batch = param.batch,
+            epochs = param.epochs,
+            resume = param.resume,
+            seed = param.seed,
+            imgsz = param.imgsz
+        )
+        return params
+    

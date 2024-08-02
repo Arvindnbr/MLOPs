@@ -13,6 +13,7 @@ data_ingestion:
 # COCO data     "https://public.roboflow.com/ds/fYqIOuhVKK?key=sAOM4f2h70"
 
 data_validation:
+  current_dset: artifacts/data_ingestion/data         #replace data with the name of the subset if creating one
   data_val_dir: artifacts/data_validation
   data_val_status: artifacts/data_validation/status.txt
   data_val_req: 
@@ -21,18 +22,30 @@ data_validation:
     - data.yaml
 
 
-training_params:  
+train_log_config:  
   model: yolov8n.pt # choices="yolov8n","yolov8s","yolov8m","yolov8l","yolov8x"
   save_path: artifacts/trained_models
-  epochs: 1
-  batch: 5
-  imgsz: 640
-
-mlflow:
-  mlflow_uri: http://127.0.0.1:8080
+  mlflow_uri: http://127.0.0.1:5000
   experiment_name: v8OPS
   model_name: yolov8det
 
+
+#new custom dataset
+custom_dataset:
+  base_Data_path: artifacts/data_ingestion/data
+  classes: []
+  new_data_path: artifacts/data_ingestion
+  dataset_name: version1
+
+params:
+  optimizer: auto # other choices=['SGD', 'Adam', 'AdamW', 'RMSProp']
+  lr0: 0.02       # learning rate 
+  save_period: -1
+  batch: 32
+  epochs: 1
+  resume: False
+  seed: 0
+  imgsz: 640 
 
 # evaluation:
 #   path_of_model: artifacts/trained_model/Trainedv8.pt

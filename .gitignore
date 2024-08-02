@@ -165,4 +165,6 @@ runs/*
 artifacts/*
 
 mlartifacts/*
-mlsuns/*
+mlruns/*
+
+datasets/*

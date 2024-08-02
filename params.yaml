@@ -1,7 +1,8 @@
-optimizer: auto 
-lr0: 0.01
+optimizer: auto # other choices=['SGD', 'Adam', 'AdamW', 'RMSProp']
+lr0: 0.01       # learning rate 
 save_period: -1
 batch: 16
 epochs: 1
 resume: False
-image_size: 640
+seed: 0
+imgsz: 640 

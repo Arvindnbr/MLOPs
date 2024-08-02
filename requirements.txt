@@ -19,4 +19,5 @@ joblib
 Flask
 Flask-Cors
 mlflow
+onnxruntime
 -e . 

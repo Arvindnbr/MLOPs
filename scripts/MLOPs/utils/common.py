@@ -1,5 +1,6 @@
 import os
 import yaml
+import shutil
 from scripts.MLOPs import logger
 import json
 import joblib
@@ -11,6 +12,7 @@ from typing import Any
 import base64
 
 
+ROOT_DIR = Path(__file__).resolve().parents[1]
 
 
 @ensure_annotations
@@ -24,7 +26,7 @@ def read_yaml(yaml_path:Path)-> ConfigBox:
         raise ValueError("yaml file is empty")
     except Exception as e:
         raise e
-    
+
 @ensure_annotations
 def update_train_yaml(yaml_path, path_dir):
     with open(yaml_path,'r') as file:
@@ -37,7 +39,7 @@ def update_train_yaml(yaml_path, path_dir):
 
     with open(yaml_path, 'w') as file:
         yaml.safe_dump(data, file,default_flow_style=False)
-    
+
 @ensure_annotations
 def create_directories(path_to_dir: list, verbose=True):
     for path in path_to_dir:
@@ -66,3 +68,14 @@ def decodeImage(imgstr, filename):
 def encodeImage(cropped_imgpath):
     with open (cropped_imgpath, 'rb') as f:
         return base64.b64encode(f.read())
+
+# def indices(base_set: list, new_set: list):
+#     base_set = [item.lower() for item in base_set]
+#     new_set = [item.lower() for item in new_set]
+#     new_indices =[]
+#     for item in new_set:
+#         indices = [i for i, x in enumerate(base_set) if x == item]
+#         new_indices.extend(indices)
+#     return new_indices
+
+
