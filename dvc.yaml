@@ -1,0 +1,46 @@
+
+
+
+stages:
+  data_ingestion:
+    cmd: python scripts\MLOPs\pipeline\stage01_ingestion.py
+    deps:
+      - scripts\MLOPs\pipeline\stage01_ingestion.py
+      - config\config.yaml
+    outs:
+      - artifacts\data_ingestion\data
+
+  data_sorter:
+    cmd: python scripts\MLOPs\pipeline\stage02_subsetter.py
+    deps:
+     - scripts\MLOPs\pipeline\stage02_subsetter.py
+     - config\config.yaml
+    # outs:
+    #  - artifacts\data_ingestion\data
+  
+  data_validation:
+    cmd: python scripts\MLOPs\pipeline\stage03_validation.py
+    deps:
+     - scripts\MLOPs\pipeline\stage03_validation.py
+     - config\config.yaml
+    outs: 
+     - artifacts\data_validation\status.txt
+
+  train_log:
+    cmd: python scripts\MLOPs\components\model_trainer.py
+    deps:
+     - scripts\MLOPs\components\model_trainer.py
+     - config\config.yaml
+     - artifacts\data_validation\status.txt
+    params:
+     - param.optimizer
+     - param.lr0
+     - param.artifacts 
+     - param.batch
+     - param.epochs
+     - param.resume
+     - param.seed
+     - param.imgsz
+    outs:
+     - artifacts\trained_models
+

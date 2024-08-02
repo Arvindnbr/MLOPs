@@ -53,7 +53,7 @@ class ConfigurationManager:
         return dataset_config
     
     def get_params(self)-> Params:
-        param = self.config.params
+        param = self.config.param
         params = Params(
             optimizer = param.optimizer,
             lr0 = param.lr0,

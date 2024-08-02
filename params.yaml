@@ -1,8 +1,8 @@
-optimizer: auto # other choices=['SGD', 'Adam', 'AdamW', 'RMSProp']
-lr0: 0.01       # learning rate 
+optimizer: SGD # other choices=['SGD', 'Adam', 'AdamW', 'RMSProp']
+lr0: 0.02       # learning rate 
 save_period: -1
-batch: 16
+batch: 23
 epochs: 1
 resume: False
 seed: 0
-imgsz: 640 
+imgsz: 640

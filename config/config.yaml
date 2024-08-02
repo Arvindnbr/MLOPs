@@ -37,7 +37,7 @@ custom_dataset:
   new_data_path: artifacts/data_ingestion
   dataset_name: version1
 
-params:
+param:
   optimizer: auto # other choices=['SGD', 'Adam', 'AdamW', 'RMSProp']
   lr0: 0.02       # learning rate 
   save_period: -1

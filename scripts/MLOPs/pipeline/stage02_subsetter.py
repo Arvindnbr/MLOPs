@@ -1,7 +1,7 @@
 import sys
-from scripts.MLOPs import logger
 from scripts.MLOPs.config.configuration import ConfigurationManager
 from scripts.MLOPs.exception import AppException
+from scripts.MLOPs import logger
 from scripts.MLOPs.components.data_sorter import DataSetSorter
 
 
@@ -22,3 +22,14 @@ class DataSubsetterPipeline:
                 raise AppException(e, sys)
         else:
             pass
+
+
+
+if __name__ == '__name__':
+    try:
+        logger.info(f">>>>>>>>>>>>>>>>> stage {STAGE1} started <<<<<<<<<<<<<<<<<")
+        step1 = DataSubsetterPipeline()
+        step1.main()
+        logger.info(f">>>>>>>>>>>>>>>>>> stage {STAGE1} completed <<<<<<<<<<<<<<<<<<<< \n \n xxxxxxxxxxxxx=====xxxxxxxxxxxxxx")
+    except Exception as e:
+        raise AppException(e, sys)

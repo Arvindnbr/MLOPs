@@ -3,6 +3,7 @@ import os,sys
 import logging
 import torch
 import mlflow
+import onnx, onnxruntime
 from scripts.MLOPs.exception import AppException
 from scripts.MLOPs.config.configuration import DataValidationConfig,TrainLogConfig,Params
 
@@ -88,7 +89,8 @@ class ModelTrainer:
             save_path = os.path.join(self.config.save_path,"Trainedv8.pt")
             model = YOLO(save_path)
             yolonnx = model.export(format="onnx", dynamic= True)
-            mlflow.onnx.log_model(yolonnx, "YOLOv8n")             ##logged model
+            yolonnx_model = onnx.load(yolonnx)
+            mlflow.onnx.log_model(yolonnx_model, "YOLOv8n")             ##logged model
         mlflow.end_run()
             
 
