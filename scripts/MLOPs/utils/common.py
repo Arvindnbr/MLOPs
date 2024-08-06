@@ -1,4 +1,4 @@
-import os
+import os, re, random
 import yaml
 import shutil
 from scripts.MLOPs import logger
@@ -68,6 +68,29 @@ def decodeImage(imgstr, filename):
 def encodeImage(cropped_imgpath):
     with open (cropped_imgpath, 'rb') as f:
         return base64.b64encode(f.read())
+    
+#get the train folder from run
+def get_highest_train_folder(parent_folder):
+    items = os.listdir(parent_folder)
+    # Filter the folders and get their numbers
+    train_folders = [
+        (item, int(item[5:]))
+        for item in items
+        if os.path.isdir(os.path.join(parent_folder, item)) and re.match(r'train\d+$', item)
+    ]
+    # Return the folder with the highest number, or None if no matching folders
+    return max(train_folders, key=lambda x: x[1])[0] if train_folders else None
+
+
+
+def get_random_file_from_folder(folder_path):
+    files = [f for f in os.listdir(folder_path) if os.path.isfile(os.path.join(folder_path, f))]
+    if files:
+        random_file = random.choice(files)
+        return os.path.join(folder_path, random_file)
+    else:
+        print(f"No files found in {folder_path}.")
+        return None
 
 # def indices(base_set: list, new_set: list):
 #     base_set = [item.lower() for item in base_set]

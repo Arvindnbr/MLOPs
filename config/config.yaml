@@ -26,8 +26,8 @@ train_log_config:
   model: yolov8n.pt # choices="yolov8n","yolov8s","yolov8m","yolov8l","yolov8x"
   save_path: artifacts/trained_models
   mlflow_uri: http://127.0.0.1:5000
-  experiment_name: v8OPS
-  model_name: yolov8det
+  experiment_name: v8nOPS
+  model_name: yolov8ndet
 
 
 #new custom dataset
@@ -38,10 +38,10 @@ custom_dataset:
   dataset_name: version1
 
 param:
-  optimizer: auto # other choices=['SGD', 'Adam', 'AdamW', 'RMSProp']
-  lr0: 0.02       # learning rate 
+  optimizer: SGD # other choices=['SGD', 'Adam', 'AdamW', 'RMSProp']
+  lr0: 0.03       # learning rate 
   save_period: -1
-  batch: 32
+  batch: 24
   epochs: 1
   resume: False
   seed: 0

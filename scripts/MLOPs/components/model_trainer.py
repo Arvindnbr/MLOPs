@@ -65,7 +65,8 @@ class ModelTrainer:
             )
         model.save(save_path)
         return model
-    
+        
+    '''
     def log_into_mlflow(self):
 
         settings.update({'mlflow': True})
@@ -92,7 +93,7 @@ class ModelTrainer:
             yolonnx_model = onnx.load(yolonnx)
             mlflow.onnx.log_model(yolonnx_model, "YOLOv8n")             ##logged model
         mlflow.end_run()
-            
+        '''    
 
     def run_pipeline(self):
         if (self.validation_status() == True):
